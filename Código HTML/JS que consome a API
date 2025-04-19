@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema Login C++</title>
+  <script>
+    async function cadastrar() {
+      const usuario = document.getElementById("cadastro_usuario").value;
+      const senha = document.getElementById("cadastro_senha").value;
+
+      const res = await fetch("http://localhost:18080/cadastro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuario, senha })
+      });
+
+      const texto = await res.text();
+      document.getElementById("mensagem").innerText = texto;
+    }
+
+    async function logar() {
+      const usuario = document.getElementById("login_usuario").value;
+      const senha = document.getElementById("login_senha").value;
+
+      const res = await fetch("http://localhost:18080/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuario, senha })
+      });
+
+      const texto = await res.text();
+      document.getElementById("mensagem").innerText = texto;
+    }
+  </script>
+</head>
+<body>
+  <h2>Cadastro</h2>
+  <input type="text" id="cadastro_usuario" placeholder="Usuário">
+  <input type="password" id="cadastro_senha" placeholder="Senha">
+  <button onclick="cadastrar()">Cadastrar</button>
+
+  <h2>Login</h2>
+  <input type="text" id="login_usuario" placeholder="Usuário">
+  <input type="password" id="login_senha" placeholder="Senha">
+  <button onclick="logar()">Entrar</button>
+
+  <p id="mensagem"></p>
+</body>
+</html>
