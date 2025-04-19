@@ -1,0 +1,14 @@
+Como rodar:
+Compile o main.cpp com:
+
+bash
+Copiar
+Editar
+g++ main.cpp -o servidor -pthread -lboost_system
+Execute o servidor:
+
+bash
+Copiar
+Editar
+./servidor
+Abra o index.html no navegador (você pode abrir direto ou rodar com um servidor local como o VSCode Live Server)
